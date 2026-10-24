@@ -1,0 +1,3 @@
+User-Agent:*
+# Disallow:/test_dev/
+Sitemap:https://classico-os.com/sitemap.xml

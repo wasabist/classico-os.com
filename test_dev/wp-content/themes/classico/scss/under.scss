@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@use 'config/mixin' as *;
+@use 'config/variable';
+
+@use 'compornent/head';
+@use 'compornent/box';
+@use 'compornent/btn';
+
+@use 'layout/content';
+
+/*@use 'style-common';*/
+@use 'style-under';

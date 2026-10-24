@@ -1,0 +1,88 @@
+@charset "utf-8";
+
+@media screen and (min-width:768px) and (max-width:1023px){
+
+/* --------------------
+全体
+-------------------- */
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.main_catch {
+    width: 80%;
+    height: 290px;
+}
+
+
+.jpmap_box {
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.jpmap_box_inner {
+    position: relative;
+    height: 500px;
+    width: 500px;
+    margin: 0 auto;
+    background-image: url(../img/ja_bgmap.png);
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+}
+
+.jpmap_box_inner ul li.branch_hokkaidou {
+    position: absolute;
+    top: 30px;
+    left: 230px;
+}
+
+.jpmap_box_inner ul li.branch_tokyo {
+    position: absolute;
+    top: 300px;
+    left: 340px;
+}
+
+.jpmap_box_inner ul li.branch_osaka {
+    position: absolute;
+    top: 300px;
+    left: 65px;
+}
+
+.jpmap_box_inner ul li.branch_osaka a {
+    width: 85px;
+}
+
+.jpmap_box_inner ul li.branch_hukuoka {
+    position: absolute;
+    top: 460px;
+    left: 75px;
+}
+
+.jpmap_box_inner ul li.branch_nara {
+    position: absolute;
+    bottom: 40px;
+    left: 180px;
+}
+
+.jpmap_box_inner ul li a {
+    color: #fff !important;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    display: inline-block;
+    width: 70px;
+    background-color: #4A90E2;
+    padding: 8px 10px;
+    border-radius: 3px;
+    box-shadow: 0 2px 0 #2F6DB5;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    opacity: 1;
+}
+
+.jpmap_box_inner ul li a:hover {
+    opacity: 0.8;
+}
+}

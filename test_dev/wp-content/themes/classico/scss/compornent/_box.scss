@@ -1,0 +1,857 @@
+@use '../config/mixin' as *;
+@use '../config/variable' as *;
+
+// モジュール・ボックス
+
+
+.box-C {
+  width: calc(50% - 5px);
+}
+
+.box-D {
+  background-color: #F2F5F9;
+  color: #003988;
+  margin: 17.5px auto 0;
+  padding: 13px 15px;
+  max-width: 980px;
+
+  @include sp {
+    margin-top: calc(1.09375rem + ((1vw - 3.75px) * 1.9337));
+    padding: calc(0.8125rem + ((1vw - 3.75px) * 1.43646)) calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+  }
+  @include pc {
+    margin-top: 35px;
+    padding: 26px 30px;
+  }
+
+  > .mark {
+    width: 84.75px;
+
+    @include sp { width: calc(5.29688rem + ((1vw - 3.75px) * 9.36464)); }
+    @include pc { width: 169.5px; }
+
+    > img { width: 100%; }
+  }
+
+  > .inner {
+    padding-left: 10px;
+    width: calc(100% - 84.75px);
+
+    @include sp {
+      padding-left: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+      width: calc(100% - (5.29688rem + ((1vw - 3.75px) * 9.36464)));
+    }
+    @include pc {
+      padding-left: 20px;
+      width: calc(100% - 169.5px);
+    }
+
+    > .tit {
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 5px;
+
+      @include sp {
+        font-size: calc(0.6875rem + ((1vw - 3.75px) * 0.33149));
+        margin-bottom: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+      }
+      @include pc {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+    }
+
+    > .txt {
+      font-size: 10px;
+      line-height: 1.5;
+
+      @include sp { font-size: calc(0.625rem + ((1vw - 3.75px) * 0.22099)); }
+      @include pc { font-size: 12px; }
+    }
+  }
+}
+
+.box-E {
+  margin-bottom: 25px;
+
+  @include sp { margin-bottom: calc(1.5625rem + ((1vw - 3.75px) * 2.76243)); }
+  @include pc { margin-bottom: 50px; }
+
+  &:last-child { margin-bottom: 0; }
+
+  > .img {
+    margin-bottom: 25px;
+    width: 50%;
+
+    @include sp { margin-bottom: calc(1.5625rem + ((1vw - 3.75px) * 2.76243)); }
+    @include pc {
+      margin-bottom: 50px;
+      width: 100%;
+    }
+
+    > img { width: 100%; }
+  }
+
+  > .box-inner {
+    align-items: flex-start;
+    margin-bottom: 40px;
+
+    @include sp { margin-bottom: calc(2.5rem + ((1vw - 3.75px) * 4.41989)); }
+    @include pc { margin-bottom: 80px; }
+
+    > .tit {
+      width: 72px;
+      @include sp { width: calc(4.5rem + ((1vw - 3.75px) * 7.9558)); }
+      @include pc { width: 144px; }
+
+      > .num {
+        width: 72px;
+        @include sp { width: calc(4.5rem + ((1vw - 3.75px) * 7.9558)); }
+        @include pc { width: 144px; }
+
+        > img { width: 100%; }
+      }
+    }
+
+    > .box-inner-02 {
+      color: #003988;
+      padding-left: 15px;
+      width: calc(100% - 72px);
+
+      @include sp {
+        padding-left: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+        width: calc(100% - (4.5rem + ((1vw - 3.75px) * 7.9558)));
+      }
+      @include pc {
+        padding-left: 30px;
+        width: calc(100% - 144px);
+      }
+
+      > .tit {
+        font-size: 27px;
+        font-weight: 600;
+        line-height: 1.5;
+        margin-bottom: 10px;
+
+        @include sp {
+          font-size: calc(1.6875rem + ((1vw - 3.75px) * 0.99448));
+          margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+        }
+        @include pc {
+          font-size: 36px;
+          margin-bottom: 20px;
+        }
+      }
+
+      > .txt {
+        font-size: 11px;
+        line-height: 1.75;
+        margin-bottom: 17.5px;
+
+        @include sp {
+          font-size: calc(0.6875rem + ((1vw - 3.75px) * 0.33149));
+          margin-bottom: calc(1.09375rem + ((1vw - 3.75px) * 1.9337));
+        }
+        @include pc {
+          font-size: 14px;
+          margin-bottom: 35px;
+        }
+      }
+    }
+  }
+}
+
+.box-F {
+  border: 1px dotted #003988;
+  border-radius: 5px;
+  color: #003988;
+  font-size: 10px;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+
+  @include sp {
+    border-radius: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+    font-size: calc(0.625rem + ((1vw - 3.75px) * 0.44199));
+    padding: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+  }
+  @include pc {
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 20px;
+  }
+
+  > .tit {
+    background-color: #003988;
+    color: #FFF;
+    display: inline-block;
+    line-height: 15px;
+    padding: 0 5px;
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+
+    @include sp {
+      line-height: calc(0.9375rem + ((1vw - 3.75px) * 0.55249));
+      padding: 0 calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+    }
+    @include pc {
+      line-height: 20px;
+      padding: 0 10px;
+    }
+  }
+
+  > .txt { line-height: 1.5; }
+}
+
+
+.box-H {
+  align-items: stretch !important;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 980px;
+
+  > .box-inner {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 15px;
+    width: 100%;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include sp {
+      border-radius: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+      margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+      padding: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+    }
+    @include tb {
+      margin-bottom: 0;
+      width: calc(50% - 10px);
+    }
+    @include pc {
+      border-radius: 10px;
+      margin-bottom: 20px;
+      padding: 30px;
+    }
+
+    > .tit {
+      color: $primary-color;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+
+      @include sp {
+        font-size: calc(0.75rem + ((1vw - 3.75px) * 0.44199));
+        margin-bottom: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+      }
+      @include pc {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+    }
+
+    > .img {
+      margin: 0 auto;
+      width: 100%;
+      > img {
+        width: 100%;
+      }
+    }
+
+    &#box01 > .img {
+      width: 142.5px;
+
+      @include sp {
+        width: calc(8.90625rem + ((1vw - 3.75px) * 15.74586));
+      }
+      @include pc {
+        width: 285px;
+      }
+    }
+
+    &#box02 {
+      text-align: center;
+
+      > .img {
+        margin: 0 auto 20px;
+        width: 140px;
+      }
+
+      > .txt {
+        color: $primary-color;
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1.5;
+        text-align: left;
+
+        @include sp {
+          font-size: calc(0.6875rem + ((1vw - 3.75px) * 0.22099));
+        }
+        @include pc {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+.box-I {
+  margin-bottom: 25px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include sp {
+    margin-bottom: calc(1.5625rem + ((1vw - 3.75px) * 2.76243));
+  }
+  @include pc {
+    margin-bottom: 50px;
+  }
+
+  > .img {
+    margin: 0 auto 15px;
+
+    @include sp {
+      margin-bottom: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+    }
+    @include pc {
+      margin-bottom: 30px;
+    }
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  > .box-inner {
+    width: 100%;
+
+    > .tit {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+
+      @include sp {
+        font-size: calc(1.25rem + ((1vw - 3.75px) * 0.66298));
+        margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+      }
+      @include pc {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+    }
+
+    > .txt {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.75;
+      margin-bottom: 15px;
+
+      @include sp {
+        font-size: calc(0.875rem + ((1vw - 3.75px) * 0.44199));
+        margin-bottom: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+      }
+      @include pc {
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+    }
+
+    > .check-list > .item {
+      margin-bottom: 5px;
+      position: relative;
+      padding-left: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @include sp {
+        margin-bottom: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+        padding-left: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+      }
+      @include pc {
+        margin-bottom: 10px;
+        padding-left: 30px;
+      }
+
+      &::after {
+        background: url(../img/common/check.png) no-repeat center center / cover;
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 11.25px;
+        left: 0;
+        margin: auto 0;
+        position: absolute;
+        top: 0;
+        width: 14.25px;
+
+        @include sp {
+          height: calc(0.70312rem + ((1vw - 3.75px) * 0.41436));
+          width: calc(0.89062rem + ((1vw - 3.75px) * 0.52486));
+        }
+        @include pc {
+          height: 15px;
+          width: 19px;
+        }
+      }
+    }
+  }
+
+  &#box03 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1060px;
+
+    @include pc {
+      margin-bottom: 0;
+    }
+
+    > .img {
+      max-width: 345px;
+    }
+
+    @include pc {
+      > .box-inner {
+        padding-left: 90px;
+        width: calc(100% - 345px);
+      }
+    }
+  }
+
+  &#box04 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1040px;
+
+    > .img {
+      max-width: 300px;
+    }
+
+    @include pc {
+      > .box-inner {
+        width: calc(100% - 300px);
+      }
+    }
+  }
+}
+
+
+.box-J {
+  border: 1px dotted #003988;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  padding: 20px 15px;
+
+  @include sp {
+    border-radius: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+    margin-bottom: calc(1.5625rem + ((1vw - 3.75px) * 2.76243));
+    padding-bottom: calc(1.25rem + ((1vw - 3.75px) * 2.20994));
+    padding-left: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+    padding-right: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+    padding-top: calc(1.25rem + ((1vw - 3.75px) * 2.20994));
+  }
+
+  @include pc {
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 40px;
+  }
+
+  > .box-inner {
+    background-color: #E5EBF3;
+    border-radius: 5px;
+    padding: 15px;
+
+    @include sp {
+      border-radius: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+      padding-bottom: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+      padding-left: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+      padding-right: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+      padding-top: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+    }
+
+    @include pc {
+      border-radius: 10px;
+      padding-bottom: 30px;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 30px;
+    }
+
+    > .info {
+      text-align: center;
+      margin-bottom: calc(1.25rem + ((1vw - 3.75px) * 2.20994));
+
+      @include tb {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      @include pc {
+        margin-bottom: 40px;
+      }
+
+      > * {
+        vertical-align: middle;
+      }
+
+      > .icon {
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75px;
+
+        @include sp {
+          margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+          width: calc(4.6875rem + ((1vw - 3.75px) * 2.76243));
+        }
+
+        @include tb {
+          margin-bottom: 0;
+        }
+
+        @include pc {
+          margin-bottom: 20px;
+          width: 100px;
+        }
+
+        > img {
+          width: 100%;
+        }
+      }
+
+      > .info-inner {
+        color: #003988;
+        margin-bottom: 20px;
+        width: 100%;
+
+        @include sp {
+          margin-bottom: calc(1.25rem + ((1vw - 3.75px) * 2.20994));
+          padding-left: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+          width: calc(100% - (4.6875rem + ((1vw - 3.75px) * 8.28729)));
+        }
+
+        @include tb {
+          margin-bottom: 0;
+          padding-left: 15px;
+          width: calc(100% - 75px);
+        }
+
+        @include pc {
+          margin-bottom: 40px;
+          padding-left: 30px;
+          width: calc(100% - 150px);
+        }
+
+        > .tit {
+          font-size: 13px;
+          font-weight: 600;
+          margin-bottom: 10px;
+
+          @include sp {
+            font-size: calc(0.8125rem + ((1vw - 3.75px) * 0.33149));
+            margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+          }
+
+          @include pc {
+            font-size: 16px;
+            margin-bottom: 20px;
+          }
+        }
+
+        > .cat-list {
+          margin-bottom: 5px;
+
+          @include sp {
+            margin-bottom: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+          }
+
+          @include pc {
+            margin-bottom: 10px;
+          }
+
+          > .item {
+            background-color: #FFF;
+            padding-left: 5px;
+            padding-right: 5px;
+            line-height: 18px;
+            margin-right: 5px;
+
+            @include sp {
+              padding-left: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+              padding-right: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+              line-height: calc(1.125rem + ((1vw - 3.75px) * 0.66298));
+              margin-right: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+            }
+
+            @include pc {
+              padding-left: 10px;
+              padding-right: 10px;
+              line-height: 24px;
+              margin-right: 10px;
+            }
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+
+        > .txt {
+          line-height: 1.75;
+        }
+      }
+    }
+
+    > .table,
+    .txt-box {
+      background-color: #FFF;
+      border-radius: 5px;
+      padding: 15px;
+      width: 100%;
+
+      @include sp {
+        border-radius: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+        padding-bottom: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+        padding-left: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+        padding-right: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+        padding-top: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+      }
+
+      @include pc {
+        border-radius: 10px;
+        padding-bottom: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 30px;
+      }
+
+      > .img {
+        width: 100%;
+
+        > img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.box-K {
+  margin-bottom: 25px;
+
+  @include sp {
+    margin-bottom: calc(1.5625rem + ((1vw - 3.75px) * 2.76243));
+  }
+
+  @include pc {
+    margin-bottom: 50px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  > .tit {
+    margin-bottom: 15px;
+    text-align: center;
+
+    @include sp {
+      margin-bottom: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+    }
+
+    @include pc {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.box-L {
+  color: #003988;
+
+  > .tit {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+
+    @include sp {
+      font-size: calc(0.8125rem + ((1vw - 3.75px) * 0.33149));
+      margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+    }
+
+    @include pc {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+  }
+
+  > .table {
+    border-collapse: collapse;
+    border-bottom: 1px solid #003988;
+    border-top: 1px solid #003988;
+    line-height: 1.5;
+    width: 100%;
+
+    tr {
+      &:last-child {
+        > .label,
+        > .item {
+          border-bottom: none;
+        }
+      }
+
+      > .label {
+        border-bottom: 1px dotted #003988;
+        font-weight: 600;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        width: 50px;
+        line-height: 1.75;
+
+        @include sp {
+          padding-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+          padding-top: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+          width: calc(3.125rem + ((1vw - 3.75px) * 5.52486));
+        }
+
+        @include pc {
+          padding-bottom: 20px;
+          padding-top: 20px;
+          width: 100px;
+        }
+      }
+
+      > .item {
+        border-bottom: 1px dotted #003988;
+        font-size: 12px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        width: calc(100% - 50px);
+        line-height: 2;
+
+        @include sp {
+          font-size: calc(0.75rem + ((1vw - 3.75px) * 0.22099));
+          padding-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+          padding-top: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+          width: calc(100% - (3.125rem + ((1vw - 3.75px) * 5.52486)));
+        }
+
+        @include pc {
+          font-size: 14px;
+          padding-bottom: 20px;
+          padding-top: 20px;
+          width: calc(100% - 100px);
+        }
+
+        > .list > .item {
+          border-bottom: 1px dotted #003988;
+          margin-bottom: 10px;
+          padding-bottom: 10px;
+
+          @include sp {
+            margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+            padding-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+          }
+
+          @include pc {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+          }
+
+          &:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.list-A > .item {
+  font-size: 10px;
+  text-align: center;
+  vertical-align: top;
+  max-width: 130px;
+  width: 33.33333%;
+
+  @include sp { font-size: calc(0.625rem + ((1vw - 3.75px) * 0.22099)); }
+  @include pc {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  > * { display: block; }
+
+  > .icon {
+    border-radius: 50%;
+    margin: 0 auto 7.5px;
+    position: relative;
+    width: 82.5px;
+
+    @include sp {
+      margin-bottom: calc(0.46875rem + ((1vw - 3.75px) * 0.82873));
+      width: calc(5.15625rem + ((1vw - 3.75px) * 3.03867));
+    }
+    @include pc {
+      margin-bottom: 15px;
+      width: 110px;
+    }
+
+    > img { width: 100%; }
+  }
+
+  > .txt { line-height: 1.5; }
+}
+
+.txt-box-A > .txt {
+  line-height: 1.75;
+  margin-bottom: 10px;
+  color: $primary-color;
+
+  @include sp { margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497)); }
+  @include pc { margin-bottom: 20px; }
+  &:last-child { margin-bottom: 0; }
+}
+
+.unit-B {
+  width: 100%;
+
+  > .label {
+    background-color: #003988;
+    color: #FFF;
+    display: inline-block;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 0 7.5px;
+
+    @include sp {
+      margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+      padding: 0 calc(0.46875rem + ((1vw - 3.75px) * 0.82873));
+    }
+    @include pc {
+      margin-bottom: 20px;
+      padding: 0 15px;
+    }
+  }
+
+  > .item {
+    color: #003988;
+    font-weight: 600;
+    line-height: 1.75;
+    width: 100%;
+  }
+}

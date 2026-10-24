@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+html, body, div, nav, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,footer,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+         -o-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+html {
+overflow-x: hidden !important;
+}
+
+body {
+color:#444;
+background-color: #fff;
+overflow-x: hidden !important;
+overflow-y: hidden !important;
+}
+
+ol, ul {
+	list-style: none;
+	letter-spacing:0.1em;
+}
+
+p {
+line-height:1.6;
+letter-spacing:0.1em;
+}
+dl {
+line-height:1.6;
+letter-spacing:0.1em;
+}
+
+caption, th, td {
+	font-weight: normal;
+	text-align: left;
+	vertical-align:top;
+}
+
+img {
+height: auto;
+width /***/:auto;
+border:0;
+vertical-align:bottom;
+}
+
+a,a:link a:visited {
+color:#333;
+transition: all .3s;
+text-decoration:none;
+}
+
+a:hover {
+color:#ee7c1a;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+.clearfix {
+  min-height: 1px;
+}
+
+* html .clearfix {
+  height: 1px;
+  /*\*//*/
+  height: auto;
+  overflow: hidden;
+  /**/
+}
+
+a.imghover:link img {
+transition: all .3s;
+}
+a.imghover:hover img {
+filter:alpha(opacity=70);
+opacity:0.7;
+}

@@ -1,0 +1,131 @@
+@use '../config/mixin' as *;
+@use '../config/variable' as *;
+
+// 見出し
+
+.head-C {
+  color: #003988;
+
+  > * { display: block; }
+
+  > .ja {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    margin-bottom: 5px;
+
+    @include sp {
+      font-size: calc(1.875rem + ((1vw - 3.75px) * 1.10497));
+      margin-bottom: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+    }
+    @include pc {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+  }
+
+  > .en {
+    font-size: 11px;
+
+    @include sp { font-size: calc(0.6875rem + ((1vw - 3.75px) * 0.33149)); }
+    @include pc { font-size: 14px; }
+  }
+}
+
+.head-D {
+  color: $primary-color;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 15px;
+
+  @include sp {
+    font-size: calc(1.125rem + ((1vw - 3.75px) * 1.98895));
+    margin-bottom: calc(0.9375rem + ((1vw - 3.75px) * 1.65746));
+  }
+  @include pc {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+}
+
+.head-F {
+  @extend .head-D;
+  text-align: center;
+}
+
+.tit-A {
+  color: #003988;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  @include sp {
+    font-size: calc(1.125rem + ((1vw - 3.75px) * 0.66298));
+    margin-bottom: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+  }
+  @include pc {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  > .inner {
+    background-color: #FFF;
+    display: inline-block;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+
+    @include sp { padding: 0 calc(0.9375rem + ((1vw - 3.75px) * 1.65746)); }
+    @include pc { padding: 0 30px; }
+  }
+
+  &::after {
+    background-color: #003988;
+    content: '';
+    display: block;
+    height: 1px;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto 0;
+    width: 100%;
+  }
+}
+
+.tit-G > img {
+  width: calc(50% - 5px);
+  vertical-align: middle;
+
+  &:nth-of-type(1) {
+    margin-right: 10px;
+  }
+
+  @include tb {
+    width: auto;
+
+    &:nth-of-type(1) {
+      margin-right: 50px;
+    }
+  }
+}
+
+.tit-H {
+  width: 93px;
+  margin-right: auto;
+  margin-left: auto;
+
+  > img {
+    width: 100%;
+  }
+
+  @include sp {
+    width: calc(5.8125rem + ((1vw - 3.75px) * 10.27624));
+  }
+
+  @include pc {
+    width: 186px;
+  }
+}

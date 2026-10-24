@@ -1,0 +1,100 @@
+<!-- wp:html -->
+<section id="_head" class="section">
+<div class="inner">
+<div class="inner-02">
+<h2 class="head head-C"><span class="ja">メルマガ登録</span><br><span class="en">最新の労務トレンドやセミナー案内、実務に役立つ情報をいち早くお届けします。<br>
+人事・労務担当者が押さえておきたいポイントを、わかりやすく解説して配信中！<br>
+登録は無料・いつでも解除可能です。</span></h2>
+</div>
+</div>
+</section>
+<section id="fixation_content">
+	<div role="form">
+		<form id="form_1" action="https://form.k3r.jp/classico/mailmagazine_classico" method="POST">
+			<div id="form_content">
+				<div class="form_box">
+					<dl class="form_dl">
+						<dt>お名前<span>必須</span></dt>
+						<dd class="input_short column2">
+							<span class="f_item_name_last">
+								<input type="text" autocomplete="family-name" name="f_item_name_last" title="全角文字で入力してください" class="required" value="" size="40" placeholder="例 : 山田" required>
+								<span class="error-msg"></span>
+							</span>
+							<span class="f_item_name_first">
+								<input type="text" autocomplete="given-name" name="f_item_name_first" title="全角文字で入力してください" class="required" value="" size="40" placeholder="例 : 太郎" required>
+								<span class="error-msg"></span>
+							</span>
+						</dd>
+					</dl>
+					<dl class="form_dl">
+						<dt>会社・組織名<span>必須</span></dt>
+						<dd class="input_short">
+							<span class="f_item_company_name">
+								<input type="text" name="f_item_company_name" autocomplete="organization" class="required" value="" size="40" placeholder="例 : 会社名・組織名・団体名" required>
+								<p class="note">※漢字・かな・カナ・数字のいずれかを含めてご入力ください</p>
+								<span class="error-msg"></span>
+							</span>
+						</dd>
+					</dl>
+					<dl class="form_dl">
+						<dt>メールアドレス<span>必須</span></dt>
+						<dd class="input_short">
+							<span class="f_item_mail">
+								<input type="email" name="f_item_mail" autocomplete="email" class="required" value="" size="40" placeholder="例：yamada@example.com" required>
+								<span class="error-msg"></span>
+							</span>
+						</dd>
+					</dl>
+					<dl class="form_dl">
+						<dt>役職<span>必須</span></dt>
+						<dd class="input_short">
+							<div class="select_wrapper">
+								<select name="f_item_drop8[]" class="required" required>
+									<option value="">---</option>
+									<option value="経営者・役員クラス">経営者・役員クラス</option>
+									<option value="事業部長・部長クラス">事業部長・部長クラス</option>
+									<option value="次長・課長クラス">次長・課長クラス</option>
+									<option value="係長・主任クラス">係長・主任クラス</option>
+									<option value="一般社員">一般社員</option>
+									<option value="その他">その他</option>
+								</select>
+								<span class="error-msg"></span>
+							</div>
+						</dd>
+					</dl>
+					<dl class="form_dl">
+					<dt>従業員数<span>必須</span></dt>
+						<dd class="input_short">
+							<div class="select_wrapper">
+								<select name="f_item_drop9[]" class="required" required>
+									<option value="">---</option>
+									<option value="1～10名">1～10名</option>
+									<option value="11～50名">11～50名</option>
+									<option value="51～100名">51～100名</option>
+									<option value="101～150名">101～150名</option>
+									<option value="151～300名">151～300名</option>
+									<option value="301～500名">301～500名</option>
+									<option value="501～1000名">501～1000名</option>
+									<option value="1001名以上">1001名以上</option>
+								</select>
+								<span class="error-msg"></span>
+							</div>
+						</dd>
+					</dl>
+				</div><!-- /.form_box -->
+				<input type="hidden" name="api_key" value="3655f3d9963d3326abe2dbff4fccdce11ccdc9c3" />
+				<input type="hidden" name="opt" value="1" /><!-- メール配信 承諾=1 未承諾=0 -->
+				<input type="hidden" name="red" value="https://classico-os.com/test_dev/mail-magazine-thanks/">
+				<input type="hidden" name="red_error" value="https://classico-os.com/test_dev/contact-error/">
+				<div class="input_btn">
+					<input id="send" type="submit" value="送信する" class="feature_func_campaign_api_sample_submit_input" disabled>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>
+<style>
+#form_content input[type="radio"]{margin-right:5px;}
+.input_short .note{color: #666; font-size: 13px; margin-top: 5px;}
+</style>
+<!-- /wp:html -->

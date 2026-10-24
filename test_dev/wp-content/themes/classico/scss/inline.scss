@@ -1,0 +1,1044 @@
+@use 'config/mixin' as *;
+@use 'config/variable' as *;
+
+body {
+font-family: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif !important;
+letter-spacing: .05em;
+font-feature-settings: "palt";
+font-size: 12px;
+text-align: justify;
+}
+#header {
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .08);
+
+  > .inner {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @include sp {
+      padding-left: 16px;
+      padding-right: 0;
+    }
+    @include pc {
+      padding: 5px 30px;
+      height: 90px;
+      transition: all .3s ease-in-out;
+    }
+
+    > .inner-02 {
+      padding: 15px 0;
+
+      @include sp {
+        padding: 0;
+        height: 56px;
+        justify-content: space-between;
+      }
+      @include pc {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1320px;
+        height: 100%;
+        position: relative;
+      }
+
+      > .h-unit {
+        width: auto;
+
+        @include pc {
+          width: 296px;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        &:first-of-type {
+          @include pc { z-index: 2; }
+        }
+
+        &:nth-of-type(2) {
+          width: 56px;
+          @include pc {
+            width: 100%;
+            margin: 0;
+          }
+        }
+
+        #ci {
+          width: 175px;
+
+          @include sp { width: 240px; }
+          @include pc { width: auto; }
+
+          a {
+            display: block;
+            transition: all .3s ease-in-out;
+
+            > img {
+              width: 100%;
+              @include pc {
+                transition: all .3s ease-in-out;
+                width: 256px;
+              }
+            }
+
+            &:hover {
+              @include pc { opacity: 0.6; }
+            }
+          }
+        }
+
+        .ci__sub {
+          font-size: 10px;
+          margin-bottom: 4px;
+          @include pc { transition: all .3s ease-in-out; }
+        }
+
+        // Navigation
+        #g-navi {
+          background-color: rgba(255, 255, 255, 0.975);
+          max-height: 100vh;
+          left: 0;
+          opacity: 0;
+          position: fixed;
+          top: 0;
+          width: 100%;
+          -webkit-overflow-scrolling: touch;
+
+          @include sp-only {
+            overflow: auto;
+            padding: 56px 0 0;
+            display: block;
+            visibility: hidden;
+            pointer-events: none;
+            opacity: 0;
+
+            &.is-active {
+              transform: translateX(0);
+              visibility: visible;
+              pointer-events: auto;
+              opacity: 1;
+              transition: all 0.3s ease;
+              height: 100vh;
+            }
+          }
+
+          @include pc {
+            background-color: transparent;
+            display: block;
+            height: auto;
+            left: auto;
+            opacity: 1;
+            position: static;
+            top: auto;
+            width: auto;
+          }
+
+          > .list {
+            position: static;
+            padding: 0 15px;
+            width: 100%;
+
+            @include sp { padding: 0; }
+            @include pc {
+              left: auto;
+              top: auto;
+              transform: translate(0, 0);
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              gap: 24px;
+            }
+
+            > li.btn-A:has(+ .btn-T) {
+              @include sp-only { margin-bottom: 16px !important; }
+            }
+            > li.btn-A + .btn-T {
+              @include sp-only { margin-top: 16px !important; }
+            }
+
+            > .item:not(.btn-G) {
+              border-bottom: 1px solid $color-border;
+              margin-bottom: 20px;
+              padding-bottom: 20px;
+
+              @include pc {
+                border-bottom: none;
+                margin: 0 8px 0 0;
+                padding-bottom: 0;
+                display: inline-block;
+                position: relative;
+
+                &:last-child { margin-right: 0; }
+              }
+
+              > a {
+                color: $color-main;
+                font-size: 18px;
+                font-weight: 600;
+                padding-left: 22px;
+                position: relative;
+                white-space: nowrap;
+
+                @include pc {
+                  font-size: 14px;
+                  font-weight: 300;
+                  padding-left: 19px;
+
+                  @include sp {
+                    font-size: calc(0.75rem + ((1vw - 3.75px) * 0.22099));
+                  }
+                }
+
+                &::before {
+                  background-color: #DDFF0C;
+                  border-radius: 50%;
+                  bottom: 0;
+                  content: '';
+                  display: block;
+                  height: 15px;
+                  left: 0;
+                  margin: auto 0;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                  width: 15px;
+                }
+
+                &::after {
+                  bottom: 0;
+                  content: '';
+                  display: block;
+                  left: 6px;
+                  margin: auto 0;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                  width: 0;
+                  height: 0;
+                  border-style: solid;
+                  border-width: 2.5px 0 2.5px 5px;
+                  border-color: transparent transparent transparent $color-main;
+                }
+              }
+
+              // Sub Menu
+              > .sub-menu {
+                overflow: hidden;
+
+                @include sp-only { display: none; }
+                @include pc {
+                  bottom: 0;
+                  display: none;
+                  left: 0;
+                  margin-top: 0;
+                  transform: translateY(100%);
+                  opacity: 0;
+                  position: absolute;
+                  padding-top: 10px;
+                  z-index: 10;
+                }
+
+                > .item {
+                  border-radius: 10px;
+                  margin-bottom: 0;
+                  padding-left: 22px;
+                  padding-top: 10px;
+                  text-align: left;
+                  font-size: 18px;
+
+                  @include sp {
+                    margin-bottom: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+                  }
+                  @include pc {
+                    margin-bottom: 0;
+                    font-size: 12px;
+                    border-radius: 0;
+                    background-color: $color-white;
+                    padding: 0 5px 8px;
+
+                    &:nth-of-type(1) { padding-top: 5px; }
+                  }
+
+                  &:nth-of-type(1) { padding-top: 20px; }
+
+                  > a {
+                    color: $color-main;
+                    white-space: nowrap;
+
+                    @include pc {
+                      color: $color-text;
+                      display: block;
+                      line-height: 20px;
+                      padding: 0 10px;
+
+                      &:hover { color: #666; }
+                    }
+                  }
+                }
+              }
+
+              // Special Buttons
+              &.btn-A,
+              &.btn-T {
+                border-bottom: none;
+                margin-top: 40px;
+                padding-bottom: 0;
+                max-width: 100%;
+
+                @include sp-only {
+                  padding: 0 16px;
+                  margin: 24px 0;
+                }
+              }
+
+              &.btn-A {
+                @include pc {
+                  margin: 0;
+                  width: 200px;
+                }
+
+                > a {
+                  background-color: $color-orange;
+                  border-radius: 8px;
+                  border: 1px solid $color-orange;
+                  color: $color-white;
+                  display: flex;
+                  line-height: 64px;
+                  text-align: center;
+                  transition-duration: .3s;
+                  padding-left: 0;
+                  align-items: center;
+                  justify-content: center;
+
+                  @include pc {
+                    border-radius: 4px;
+                    line-height: 56px;
+
+                    &:hover { opacity: 0.6; }
+                  }
+
+                  &::before {
+                    content: '';
+                    background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_mail.svg) no-repeat center center / 100% auto;
+                    width: 21px;
+                    height: 16px;
+                    display: block;
+                    border-radius: 0;
+                    position: relative;
+                    margin: 0 8px 0 0;
+                  }
+
+                  &::after { display: none; }
+                }
+              }
+
+              &.btn-T {
+                > a {
+                  @include sp-only {
+                    background-color: $color-white;
+                    border-radius: 8px;
+                    border: 1px solid $color-green;
+                    color: #262626;
+                    display: flex;
+                    flex-direction: column;
+                    height: 64px;
+                    text-align: center;
+                    transition-duration: .3s;
+                    padding-left: 0;
+                    align-items: center;
+                    justify-content: center;
+
+                    &::before, &::after { display: none; }
+
+                    .tel {
+                      color: $color-green;
+                      font-size: 22px;
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      margin-bottom: 2px;
+
+                      &::before {
+                        content: '';
+                        background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_tel.svg) no-repeat center center / 100% auto;
+                        width: 16px;
+                        height: 21px;
+                        display: block;
+                      }
+                    }
+
+                    .text { font-size: 12px; }
+                  }
+                }
+              }
+
+              &.bnr-A {
+                border-bottom: none;
+                padding-bottom: 0;
+                @include pc { display: none; }
+
+                > a {
+                  display: block;
+                  padding-left: 0;
+                  text-align: center;
+                  width: 100%;
+
+                  &::before, &::after { display: none; }
+                  > img { width: 338px; }
+                }
+              }
+
+              &.btn-G {
+                border-bottom: 1px solid $color-main;
+                padding-bottom: 0;
+
+                @include pc { display: none !important; }
+
+                > a {
+                  font-size: 15px;
+                  display: block;
+                  padding-left: 10px;
+                  text-align: left;
+                  width: 100%;
+
+                  @include sp {
+                    font-size: calc(0.9375rem + ((1vw - 3.75px) * -0.33149));
+                    padding-left: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+                  }
+                  @include pc {
+                    font-size: 12px;
+                    padding-left: 20px;
+                  }
+
+                  &::before { display: none; }
+                  &::after {
+                    border-bottom: 2px solid $color-main;
+                    border-right: 2px solid $color-main;
+                    bottom: 0;
+                    content: '';
+                    display: block;
+                    height: 5px;
+                    margin: auto 0;
+                    position: absolute;
+                    right: 10px;
+                    top: 0;
+                    transform: rotate(-45deg);
+                    width: 5px;
+
+                    @include sp {
+                      height: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+                      width: calc(0.3125rem + ((1vw - 3.75px) * 0.55249));
+                      right: calc(0.625rem + ((1vw - 3.75px) * 1.10497));
+                    }
+                    @include pc {
+                      height: 10px;
+                      width: 100px;
+                      right: 20px;
+                    }
+                  }
+
+                  > img { width: 338px; }
+                }
+              }
+
+              &.item-s {
+                position: relative;
+                &::after {
+                  border-bottom: 1px solid $color-main;
+                  border-right: 1px solid $color-main;
+                  content: '';
+                  display: block;
+                  height: 7.5px;
+                  position: absolute;
+                  right: 10px;
+                  top: 3px;
+                  transform: rotate(45deg);
+                  width: 7.5px;
+
+                  @include pc { display: none; }
+                }
+              }
+            }
+          }
+        }
+
+        // Mobile Menu Button
+        #menu-btn {
+          height: 56px;
+          width: 56px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: $color-main;
+
+          @include pc { display: none; }
+        }
+      }
+    }
+  }
+
+  &.is-scrolled {
+    > .inner {
+      @include pc {
+        padding: 0 30px;
+        height: 64px;
+      }
+    }
+
+    #g-navi .btn-A > a {
+      @include pc { line-height: 48px; }
+    }
+  }
+}
+
+// Menu Button Icon Elements
+.menu-btn__border {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  margin: 12px 0 6px;
+
+  span {
+    background-color: $color-white;
+    display: block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transition-duration: .3s;
+    width: 100%;
+
+    &:nth-of-type(1) { top: 0; }
+    &:nth-of-type(2) { top: 0; bottom: 0; margin: auto 0; }
+    &:nth-of-type(3) { bottom: 0; }
+  }
+}
+
+#g-navi {
+  .btn-G > a {
+    background-color: #fff;
+    display: flex;
+    height: 64px;
+    align-items: center;
+
+    .text {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    &::after {
+      border: none;
+      background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_blank_navy.svg) no-repeat center center;
+      width: 12px;
+      height: 11px;
+      transform: none;
+      right: 16px;
+    }
+  }
+
+  @include pc {
+    display: flex !important;
+    opacity: 1 !important;
+  }
+}
+
+.js-nav-toggle-content,
+.sub-menu,
+.js-c-toggle-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+  overflow: hidden;
+}
+
+.js-nav-toggle-content.is-open,
+.sub-menu.is-open,
+.js-c-toggle-content.is-open {
+  grid-template-rows: 1fr;
+}
+
+/* bnr */
+#scroll-banner {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#scroll-banner.is-show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+._opened {
+  .menu-btn__border span {
+    &:nth-of-type(1) {
+      top: 0; bottom: 0; margin: auto 0;
+      transform: rotate(45deg);
+    }
+    &:nth-of-type(2) { opacity: 0; }
+    &:nth-of-type(3) {
+      top: 0; bottom: 0; margin: auto 0;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .menu-btn__name::before { content: "閉じる"; }
+}
+
+.menu-btn__name::before {
+  content: "メニュー";
+  display: block;
+  font-size: 8px;
+  color: $color-white;
+}
+
+.l-g-navi {
+  /* --- Item & Has-Child --- */
+  &__item {
+    &.has-child {
+      .l-g-navi__item-link {
+        transition: all 0.3s ease-in-out;
+
+        @media (max-width: 1279px) {
+          position: relative;
+          justify-content: space-between;
+
+          &::after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid #003988;
+            border-right: 2px solid #003988;
+            transform: rotate(45deg);
+          }
+
+          &.is-active {
+            &::after {
+              transform: rotate(-135deg);
+            }
+
+            .nav-link-text {
+              color: #003988;
+            }
+          }
+        }
+
+        @include pc {
+          &:hover {
+            cursor: pointer;
+            color: #003988;
+
+            &::after {
+              left: 10px;
+            }
+          }
+        }
+      }
+
+      @include pc {
+        &:hover {
+          .l-g-navi__item-link {
+            color: #003988;
+
+            &::before {
+              content: '';
+              background: #ABB9DE;
+              width: 100%;
+              height: 4px;
+              position: absolute;
+              left: 0;
+              bottom: 12px;
+            }
+          }
+        }
+      }
+    }
+
+    &.before_btn {
+      @include pc {
+        position: static;
+      }
+    }
+
+    @include pc {
+      border-bottom: none;
+      margin: 0;
+      padding-bottom: 0;
+      display: inline-block;
+    }
+  }
+
+  /* --- Links (Base) --- */
+  &__item-link,
+  &__sub-item-link {
+    color: #262626;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    white-space: nowrap;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 1.37em 24px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    &::before,
+    &::after {
+      transition: all 0.3s;
+    }
+
+    &:hover::after {
+      border-color: transparent transparent transparent #fff;
+    }
+
+    @include pc {
+      font-size: 14px;
+      font-weight: 400;
+      border-bottom: none;
+    }
+  }
+
+  /* --- Item Link --- */
+  &__item-link {
+    @include pc {
+      padding: 30px 0;
+
+      &::before {
+        left: 5px;
+      }
+
+      &::after {
+        content: '';
+        background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_arrow_bottom.svg) no-repeat center center / 100% auto;
+        width: 10px;
+        height: 6px;
+        display: block;
+        margin-left: 8px;
+        left: 11px;
+      }
+    }
+  }
+
+  /* --- Sub Item Link --- */
+  &__sub-item-link {
+    border: none;
+    font-size: 16px;
+    padding: 1.37em 24px;
+
+    &::before {
+      content: '';
+      background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_arrow_right.svg) no-repeat center center / 100% auto;
+      width: 6px;
+      height: 10px;
+      display: block;
+      margin-right: 8px;
+    }
+
+    &:hover {
+      color: #003988;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 1279px) {
+      border-bottom: 1px solid #E5E5E5;
+    }
+
+    @include pc {
+      padding: 12px 8px;
+      border-bottom: 1px solid #efefef;
+    }
+  }
+
+  /* --- Main List --- */
+  &__list {
+    @media (max-width: 1279px) {
+      li:first-child .l-g-navi__item-link {
+        border-top: 1px solid #E5E5E5;
+      }
+    }
+  }
+
+  /* --- Sub List (Dropdown / Megamenu) --- */
+  &__list-sub {
+    @media (max-width: 1279px) {
+      background: #f9f9f9;
+    }
+
+    @include pc {
+      box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.16);
+      padding: 40px;
+      border-radius: 8px;
+      width: 100%;
+      z-index: 1000;
+      background-color: #fff;
+      position: absolute;
+      left: 0;
+      top: calc(100% - 12px);
+      margin: 0;
+      transition: all 0.3s;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+
+    &__pannel {
+      @include pc {
+        display: flex;
+        justify-content: space-between;
+
+        .with-download & {
+          align-items: flex-start;
+        }
+      }
+      @include sp-only {
+        min-height: 0;
+      }
+    }
+
+    &__ttl {
+      @media (max-width: 1279px) {
+        display: none;
+      }
+
+      @include pc {
+        width: 23.549%;
+        border-right: 1px solid #efefef;
+        min-height: 80px;
+        padding-top: 8px;
+        flex-basis: 23.549%;
+      }
+    }
+
+    &__main {
+      @include pc {
+        width: 74.517%;
+        display: flex;
+        flex-wrap: wrap;
+
+        &.column3 {
+          display: flex;
+          gap: 24px;
+        }
+
+        .with-download & {
+          width: 46.452%;
+          justify-content: space-between;
+        }
+
+        li {
+          width: calc((100% - 48px) / 3);
+          margin-left: 24px;
+
+          &:first-child,
+          &:nth-child(3n+1) {
+            margin-left: 0;
+          }
+
+          .with-download & {
+            width: calc((100% - 24px) / 2);
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    &__download {
+      @media (max-width: 1279px) {
+        display: none;
+      }
+
+      @include pc {
+        width: 29.356%;
+        padding-left: 16px;
+        margin: -40px -40px -40px 0;
+
+        .archive-download__item {
+          width: 100%;
+          background: #f4f6f9;
+          border-radius: 0 8px 8px 0;
+          padding: 24px;
+          a{
+            display: block;
+            transition: all .3s;
+            &:hover{
+              opacity: .8;
+            }
+          }
+          &-thumb {
+            height: 120px;
+            margin-bottom: 8px;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          &-title{
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+            border-bottom: none !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: normal;
+            color: #262626;
+            &:after{
+              content: '';
+              background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_arrow_right.svg) no-repeat center center / 100% auto;
+              width: 6px;
+              height: 10px;
+              display: block;
+              margin-left: 16px;
+              flex-basis: 6px;
+              flex-shrink: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &__module {
+      @include pc {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        figure {
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          position: relative;
+
+          &::before {
+            content: "";
+            background: #f8fbff;
+            width: 100%;
+            height: 104px;
+            border-radius: 8px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+          }
+
+          img {
+            position: relative;
+            z-index: 1;
+          }
+        }
+
+        &.romu figure img {
+          max-width: 137px;
+          padding-top: 14px;
+        }
+
+        &.consulting figure img {
+          max-width: 143px;
+          margin-top: -27px;
+        }
+
+        &.outsourcing figure img {
+          max-width: 185px;
+          margin-top: -10px;
+        }
+
+        .l-g-navi__list-sub__main {
+          flex-direction: column;
+          width: 100%;
+
+          li {
+            width: 100%;
+            margin-left: 0;
+          }
+        }
+      }
+
+      &-ttl {
+        @media (max-width: 1279px) {
+          border-bottom: 1px solid #e5e5e5;
+          background: #f4f4f4;
+          line-height: 32px;
+          padding: 0 24px;
+          color: #003988;
+          font-size: 14px;
+          font-weight: bold;
+        }
+
+        @include pc {
+          font-size: 16px;
+          font-weight: bold;
+          color: #003988;
+          padding: 16px 0;
+        }
+      }
+
+      figure {
+        @media (max-width: 1279px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.js-megamenu-parent-text {
+  @media (max-width: 1279px) {
+    display: none;
+  }
+
+  @include pc {
+    position: relative;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    align-items: center;
+
+    &::before {
+      content: '';
+      background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_arrow_circle_right.svg) no-repeat center center / 100% auto;
+      width: 16px;
+      height: 16px;
+      display: block;
+      margin-right: 8px;
+    }
+  }
+}
+
+.js-megamenu-top-link {
+  @include pc {
+    font-size: 14px;
+    text-decoration: underline;
+    margin-top: 24px;
+    display: block;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 0.6;
+      text-decoration: none;
+    }
+  }
+}
+
+#header > .inner > .inner-02 > .h-unit > #g-navi > .list > .item:not(.btn-G).btn-A.service-download {
+  @media screen and (min-width: 1280px) {
+    width: auto;
+
+    & > a {
+      padding: 0 10px;
+    }
+  }
+}
