@@ -266,6 +266,75 @@
 }
 
 /* ==========================================================================
+   c-faq01
+   ========================================================================== */
+.c-faq01 {
+  color: #003988;
+  max-width: 800px;
+  margin: auto;
+
+  & + & {
+    margin-top: 23px;
+    padding-top: 23px;
+    border-top: 1px dashed #003988;
+
+    @include tb-only {
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+  }
+
+  &__ico {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 900;
+
+    @include tb-only {
+      font-size: 22px;
+    }
+  }
+
+  &__head {
+    position: relative;
+    padding: 20px 20px 20px 90px;
+    font-size: 20px;
+    line-height: 1.45;
+    font-weight: 700;
+
+    @include tb-only {
+      font-size: 15px;
+      padding: 15px 15px 15px 70px;
+    }
+  }
+
+  &__txt {
+    position: relative;
+    font-size: 16px;
+    line-height: 1.75;
+    padding: 20px 20px 20px 90px;
+
+    .c-faq01__ico {
+      color: #F59C25;
+    }
+
+    @include tb-only {
+      font-size: 13px;
+      padding: 15px 15px 15px 70px;
+    }
+  }
+}
+
+/* ==========================================================================
    c-flow01
    ========================================================================== */
 .c-flow01 {

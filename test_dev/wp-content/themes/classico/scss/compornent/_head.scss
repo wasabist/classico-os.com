@@ -49,6 +49,36 @@
   }
 }
 
+.head-E {
+  color: $primary-color;
+  margin-bottom: 30px;
+  text-align: center;
+
+  @include sp {
+    margin-bottom: calc(1.875rem + ((1vw - 3.75px) * 3.31492));
+  }
+  @include pc {
+    margin-bottom: 60px;
+  }
+
+  > * {
+    display: block;
+  }
+
+  > .ja {
+    font-size: 27px;
+    font-weight: 600;
+    margin-bottom: 5px;
+
+    @include sp {
+      font-size: calc(1.6875rem + ((1vw - 3.75px) * 0.99448));
+    }
+    @include pc {
+      font-size: 36px;
+    }
+  }
+}
+
 .head-F {
   @extend .head-D;
   text-align: center;

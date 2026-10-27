@@ -23,36 +23,38 @@
 				<a class="l-footer__nav-item-link" href="<?php echo home_url( '/' ); ?>service/">サービス</a>
 				<ul class="l-footer__nav-child">
 					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>service/romu/">労務相談</a></li>
+					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>sharoshi/">委託替えをご検討中の方</a></li>
+					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>service/consulting/">労務コンサルティング</a></li>
 					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>service/outsourcing/">手続きアウトソーシング</a></li>
-					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>service/consulting/">コンサルティング</a></li>
-					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>service/romukansa/">労務監査</a></li>
+					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>service/jyoseikin/">助成金申請</a></li>
 					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>service/iposupport/">社労士によるIPO支援</a></li>
+					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>service/romukansa/">労務監査</a></li>
 				</ul>
-			</li>
-			<li class="l-footer__nav-item">
-				<a class="l-footer__nav-item-link" href="<?php echo home_url( '/' ); ?>sharoshi/">社労士の委託替え</a>
-			</li>
-			<li class="l-footer__nav-item">
-				<a class="l-footer__nav-item-link" href="<?php echo home_url( '/' ); ?>plan/">報酬</a>
 			</li>
 		</ul>
 		<ul class="l-footer__nav nav02">
 			<li class="l-footer__nav-item">
-				<span class="l-footer__nav-item-title">最新情報・コンテンツ</span>
+				<span class="l-footer__nav-item-title">セミナー・お役立ち情報</span>
 				<ul class="l-footer__nav-child">
-					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>seminar/">セミナー</a></li>
+					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>seminar/">セミナー情報</a></li>
 					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>columns/">コラム</a></li>
+				</ul>
+			</li>
+			<li class="l-footer__nav-item">
+				<span class="l-footer__nav-item-title">事務所情報</span>
+				<ul class="l-footer__nav-child">
+					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>company/">事務所概要</a></li>
 					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>news/">新着情報</a></li>
 				</ul>
 			</li>
 			<li class="l-footer__nav-item">
-				<span class="l-footer__nav-item-title">当社について</span>
+				<span class="l-footer__nav-item-title">ご検討中の方へ</span>
 				<ul class="l-footer__nav-child">
-					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>company/">事務所概要</a></li>
+					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>plan/">報酬</a></li>
 					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>voices/">お客様の声</a></li>
 					<li class="l-footer__nav-child-item"><a href="<?php echo home_url( '/' ); ?>media/">メディア掲載</a></li>
 				</ul>
-			</li>			
+			</li>
 		</ul>
 		<div class="l-footer__nav-btn-area">
 			<p class="l-footer__nav-btn btn btn-D footer-top"><a href="<?php echo home_url( '/' ); ?>download/">資料請求</a></p>

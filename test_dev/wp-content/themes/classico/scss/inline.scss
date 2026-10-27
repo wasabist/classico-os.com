@@ -2,7 +2,7 @@
 @use 'config/variable' as *;
 
 body {
-font-family: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif !important;
+font-family: 'Noto Sans JP', sans-serif !important;
 letter-spacing: .05em;
 font-feature-settings: "palt";
 font-size: 12px;
@@ -12,7 +12,7 @@ text-align: justify;
   background-color: #fff;
   position: fixed;
   width: 100%;
-  z-index: 3;
+  z-index: 2;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .08);
 
   > .inner {
@@ -324,7 +324,7 @@ text-align: justify;
 
                   &::before {
                     content: '';
-                    background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_mail.svg) no-repeat center center / 100% auto;
+                    background: url(../img/common/ico_mail.svg) no-repeat center center / 100% auto;
                     width: 21px;
                     height: 16px;
                     display: block;
@@ -365,7 +365,7 @@ text-align: justify;
 
                       &::before {
                         content: '';
-                        background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_tel.svg) no-repeat center center / 100% auto;
+                        background: url(../img/common/ico_tel.svg) no-repeat center center / 100% auto;
                         width: 16px;
                         height: 21px;
                         display: block;
@@ -533,7 +533,7 @@ text-align: justify;
 
     &::after {
       border: none;
-      background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_blank_navy.svg) no-repeat center center;
+      background: url(../img/common/ico_blank_navy.svg) no-repeat center center;
       width: 12px;
       height: 11px;
       transform: none;
@@ -562,7 +562,7 @@ text-align: justify;
   grid-template-rows: 1fr;
 }
 
-/* bnr */
+/* ƒ|ƒbƒvƒAƒbƒvƒoƒi[‚Ì•\Ž¦Ø‚è‘Ö‚¦ */
 #scroll-banner {
   opacity: 0;
   visibility: hidden;
@@ -572,473 +572,4 @@ text-align: justify;
 #scroll-banner.is-show {
   opacity: 1;
   visibility: visible;
-}
-
-
-._opened {
-  .menu-btn__border span {
-    &:nth-of-type(1) {
-      top: 0; bottom: 0; margin: auto 0;
-      transform: rotate(45deg);
-    }
-    &:nth-of-type(2) { opacity: 0; }
-    &:nth-of-type(3) {
-      top: 0; bottom: 0; margin: auto 0;
-      transform: rotate(-45deg);
-    }
-  }
-
-  .menu-btn__name::before { content: "é–‰ã˜ã‚‹"; }
-}
-
-.menu-btn__name::before {
-  content: "ãƒ¡ãƒ‹ãƒ¥ãƒ¼";
-  display: block;
-  font-size: 8px;
-  color: $color-white;
-}
-
-.l-g-navi {
-  /* --- Item & Has-Child --- */
-  &__item {
-    &.has-child {
-      .l-g-navi__item-link {
-        transition: all 0.3s ease-in-out;
-
-        @media (max-width: 1279px) {
-          position: relative;
-          justify-content: space-between;
-
-          &::after {
-            content: '';
-            display: block;
-            width: 10px;
-            height: 10px;
-            border-bottom: 2px solid #003988;
-            border-right: 2px solid #003988;
-            transform: rotate(45deg);
-          }
-
-          &.is-active {
-            &::after {
-              transform: rotate(-135deg);
-            }
-
-            .nav-link-text {
-              color: #003988;
-            }
-          }
-        }
-
-        @include pc {
-          &:hover {
-            cursor: pointer;
-            color: #003988;
-
-            &::after {
-              left: 10px;
-            }
-          }
-        }
-      }
-
-      @include pc {
-        &:hover {
-          .l-g-navi__item-link {
-            color: #003988;
-
-            &::before {
-              content: '';
-              background: #ABB9DE;
-              width: 100%;
-              height: 4px;
-              position: absolute;
-              left: 0;
-              bottom: 12px;
-            }
-          }
-        }
-      }
-    }
-
-    &.before_btn {
-      @include pc {
-        position: static;
-      }
-    }
-
-    @include pc {
-      border-bottom: none;
-      margin: 0;
-      padding-bottom: 0;
-      display: inline-block;
-    }
-  }
-
-  /* --- Links (Base) --- */
-  &__item-link,
-  &__sub-item-link {
-    color: #262626;
-    font-size: 16px;
-    font-weight: 600;
-    position: relative;
-    white-space: nowrap;
-    border-bottom: 1px solid #E5E5E5;
-    padding: 1.37em 24px;
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
-
-    &::before,
-    &::after {
-      transition: all 0.3s;
-    }
-
-    &:hover::after {
-      border-color: transparent transparent transparent #fff;
-    }
-
-    @include pc {
-      font-size: 14px;
-      font-weight: 400;
-      border-bottom: none;
-    }
-  }
-
-  /* --- Item Link --- */
-  &__item-link {
-    @include pc {
-      padding: 30px 0;
-
-      &::before {
-        left: 5px;
-      }
-
-      &::after {
-        content: '';
-        background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_arrow_bottom.svg) no-repeat center center / 100% auto;
-        width: 10px;
-        height: 6px;
-        display: block;
-        margin-left: 8px;
-        left: 11px;
-      }
-    }
-  }
-
-  /* --- Sub Item Link --- */
-  &__sub-item-link {
-    border: none;
-    font-size: 16px;
-    padding: 1.37em 24px;
-
-    &::before {
-      content: '';
-      background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_arrow_right.svg) no-repeat center center / 100% auto;
-      width: 6px;
-      height: 10px;
-      display: block;
-      margin-right: 8px;
-    }
-
-    &:hover {
-      color: #003988;
-      opacity: 0.6;
-    }
-
-    @media (max-width: 1279px) {
-      border-bottom: 1px solid #E5E5E5;
-    }
-
-    @include pc {
-      padding: 12px 8px;
-      border-bottom: 1px solid #efefef;
-    }
-  }
-
-  /* --- Main List --- */
-  &__list {
-    @media (max-width: 1279px) {
-      li:first-child .l-g-navi__item-link {
-        border-top: 1px solid #E5E5E5;
-      }
-    }
-  }
-
-  /* --- Sub List (Dropdown / Megamenu) --- */
-  &__list-sub {
-    @media (max-width: 1279px) {
-      background: #f9f9f9;
-    }
-
-    @include pc {
-      box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.16);
-      padding: 40px;
-      border-radius: 8px;
-      width: 100%;
-      z-index: 1000;
-      background-color: #fff;
-      position: absolute;
-      left: 0;
-      top: calc(100% - 12px);
-      margin: 0;
-      transition: all 0.3s;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-8px);
-
-      &.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-    }
-
-    &__pannel {
-      @include pc {
-        display: flex;
-        justify-content: space-between;
-
-        .with-download & {
-          align-items: flex-start;
-        }
-      }
-      @include sp-only {
-        min-height: 0;
-      }
-    }
-
-    &__ttl {
-      @media (max-width: 1279px) {
-        display: none;
-      }
-
-      @include pc {
-        width: 23.549%;
-        border-right: 1px solid #efefef;
-        min-height: 80px;
-        padding-top: 8px;
-        flex-basis: 23.549%;
-      }
-    }
-
-    &__main {
-      @include pc {
-        width: 74.517%;
-        display: flex;
-        flex-wrap: wrap;
-
-        &.column3 {
-          display: flex;
-          gap: 24px;
-        }
-
-        .with-download & {
-          width: 46.452%;
-          justify-content: space-between;
-        }
-
-        li {
-          width: calc((100% - 48px) / 3);
-          margin-left: 24px;
-
-          &:first-child,
-          &:nth-child(3n+1) {
-            margin-left: 0;
-          }
-
-          .with-download & {
-            width: calc((100% - 24px) / 2);
-            margin-left: 0;
-          }
-        }
-      }
-    }
-
-    &__download {
-      @media (max-width: 1279px) {
-        display: none;
-      }
-
-      @include pc {
-        width: 29.356%;
-        padding-left: 16px;
-        margin: -40px -40px -40px 0;
-
-        .archive-download__item {
-          width: 100%;
-          background: #f4f6f9;
-          border-radius: 0 8px 8px 0;
-          padding: 24px;
-          a{
-            display: block;
-            transition: all .3s;
-            &:hover{
-              opacity: .8;
-            }
-          }
-          &-thumb {
-            height: 120px;
-            margin-bottom: 8px;
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-          }
-          &-title{
-            margin-bottom: 0 !important;
-            padding-bottom: 0 !important;
-            border-bottom: none !important;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: normal;
-            color: #262626;
-            &:after{
-              content: '';
-              background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_arrow_right.svg) no-repeat center center / 100% auto;
-              width: 6px;
-              height: 10px;
-              display: block;
-              margin-left: 16px;
-              flex-basis: 6px;
-              flex-shrink: 0;
-            }
-          }
-        }
-      }
-    }
-
-    &__module {
-      @include pc {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-
-        figure {
-          display: flex;
-          align-items: baseline;
-          justify-content: center;
-          position: relative;
-
-          &::before {
-            content: "";
-            background: #f8fbff;
-            width: 100%;
-            height: 104px;
-            border-radius: 8px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 0;
-          }
-
-          img {
-            position: relative;
-            z-index: 1;
-          }
-        }
-
-        &.romu figure img {
-          max-width: 137px;
-          padding-top: 14px;
-        }
-
-        &.consulting figure img {
-          max-width: 143px;
-          margin-top: -27px;
-        }
-
-        &.outsourcing figure img {
-          max-width: 185px;
-          margin-top: -10px;
-        }
-
-        .l-g-navi__list-sub__main {
-          flex-direction: column;
-          width: 100%;
-
-          li {
-            width: 100%;
-            margin-left: 0;
-          }
-        }
-      }
-
-      &-ttl {
-        @media (max-width: 1279px) {
-          border-bottom: 1px solid #e5e5e5;
-          background: #f4f4f4;
-          line-height: 32px;
-          padding: 0 24px;
-          color: #003988;
-          font-size: 14px;
-          font-weight: bold;
-        }
-
-        @include pc {
-          font-size: 16px;
-          font-weight: bold;
-          color: #003988;
-          padding: 16px 0;
-        }
-      }
-
-      figure {
-        @media (max-width: 1279px) {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-.js-megamenu-parent-text {
-  @media (max-width: 1279px) {
-    display: none;
-  }
-
-  @include pc {
-    position: relative;
-    display: flex;
-    font-size: 20px;
-    font-weight: bold;
-    align-items: center;
-
-    &::before {
-      content: '';
-      background: url(https://classico-os.com/wp-content/themes/classico/img/common/ico_arrow_circle_right.svg) no-repeat center center / 100% auto;
-      width: 16px;
-      height: 16px;
-      display: block;
-      margin-right: 8px;
-    }
-  }
-}
-
-.js-megamenu-top-link {
-  @include pc {
-    font-size: 14px;
-    text-decoration: underline;
-    margin-top: 24px;
-    display: block;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      opacity: 0.6;
-      text-decoration: none;
-    }
-  }
-}
-
-#header > .inner > .inner-02 > .h-unit > #g-navi > .list > .item:not(.btn-G).btn-A.service-download {
-  @media screen and (min-width: 1280px) {
-    width: auto;
-
-    & > a {
-      padding: 0 10px;
-    }
-  }
 }
