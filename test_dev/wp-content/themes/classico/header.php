@@ -40,7 +40,7 @@ body{font-family:"Noto Sans JP","Hiragino Sans","Meiryo",sans-serif !important;l
 <link rel="stylesheet" href="<?php echo $uri; ?>/css/index.min.css?date=2026102403" media="all">
 <?php if (!is_page('top')) :?>
 <!--<link rel="stylesheet" href="<?php echo $uri; ?>/css/under.min.css?v=<?php echo filemtime($_SERVER['DOCUMENT_ROOT'] . $file_path); ?>" media="all">-->
-<link rel="stylesheet" href="<?php echo $uri; ?>/css/under.min.css?date=2026102406" media="all">
+<link rel="stylesheet" href="<?php echo $uri; ?>/css/_under.min.css?date=2026111302" media="all">
 <?php endif; ?>
 <link rel="stylesheet" href="<?php echo $uri; ?>/css/slick.css" media="print" onload="this.media='all'">
 <?php wp_head(); ?>
