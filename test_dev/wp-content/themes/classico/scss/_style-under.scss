@@ -15,7 +15,8 @@
     padding: 24px 16px 0;
   }
   @include pc {
-    padding: 24px 0 0;
+    padding: 24px 30px 0;
+    box-sizing: content-box;
   }
   + #_article{
     margin-top: 8px;
@@ -4127,12 +4128,18 @@ textarea.is-invalid {
     padding-bottom: 80px;
 
     @include tb-only {
+      padding-top: 39px;
       padding-bottom: 64px;
     }
   }
 
   .head-E{
     margin-bottom: 0;
+    >.ja {
+      @include sp-only {
+        font-size: calc(1.6875rem + (1vw - 3.75px) * .99448);
+      }
+    }
   }
 
   .c-box01{
@@ -4264,6 +4271,7 @@ textarea.is-invalid {
         font-weight: normal;
         margin-bottom: 0;
         color: #FFF;
+
         &:not(:last-child){
           margin-bottom: 12px;
         }
@@ -4302,6 +4310,10 @@ textarea.is-invalid {
     + .c-box01{
       margin-left: 24px;
 
+      @include sp-only{
+        margin-left: 16px;
+      }
+
       @include tb-only {
         margin: 24px 0 0;
       }
@@ -4317,8 +4329,9 @@ textarea.is-invalid {
     margin-bottom: 64px;
 
     @include tb-only {
-      margin-top: 30px;
-      margin-bottom: 20px;
+      font-size: 13px;
+      margin-top: 32px;
+      margin-bottom: 24px;
     }
   }
 
@@ -7038,8 +7051,9 @@ textarea.is-invalid {
 
     .head-D{
       color: #FFF;
+      font-size: 36px;
 
-      @include sp{
+      @include tb-only{
         font-size: 27px;
       }
     }
@@ -7219,6 +7233,314 @@ textarea.is-invalid {
     }
   }
 }
+
+.comparison-section {
+  padding: 80px 0;
+
+  .c-section-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #003988;
+    margin-bottom: 64px;
+
+    @include sp-only{
+      font-size: calc(1.125rem + (1vw - 3.75px) * 1.98895);
+    }
+    
+    @include tb-only{
+      font-size: 27px;
+    }
+  }
+}
+
+.comparison-table-wrap {
+  width: 92%;
+  max-width: 864px;
+  margin: 0 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.comparison-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  th, td {
+    padding: 24px 32px;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #4d77b0;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  thead {
+    th {
+      background-color: #fff;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+      border-top: none;
+    }
+
+    .comparison-table__th-empty {
+      width: 20%;
+      border-left: none;
+      border-top: none;
+      background: transparent;
+      border: none;
+    }
+
+    .comparison-table__th-col1 {
+      width: 40%;
+      border: none;
+      font-size: 18px;
+      padding: 0;
+      vertical-align: bottom;
+    }
+
+    .comparison-table__th-col2 {
+      width: 40%;
+      border: none;
+      font-size: 18px;
+      font-weight: normal;
+      padding: 0;
+      vertical-align: bottom;
+    }
+    .comparison-table__th-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      color: #fff;
+      border-radius: 8px 8px 0 0;
+      box-sizing: border-box;
+
+      &.is-main {
+        background-color: #003988;
+        padding: 37px 32px;
+      }
+
+      &.is-sub {
+        background-color: #4d77b0;
+        padding: 29px 32px;
+      }
+    }
+  }
+
+  .comparison-table__row-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 16%;
+    border: none;
+    border-bottom: 1px solid #4d77b0;
+    padding: 24px 0;
+  }
+
+  .comparison-table__col1 {
+    background-color: #eef3fa;
+    border: none;
+    border-bottom: 1px solid #4d77b0;
+    padding: 0;
+    .comparison-table__content{
+      border-left: 2px solid #003988;
+      border-right: 2px solid #003988;
+      padding: 24px;
+
+      @include tb-only{
+        padding: 16px;
+      }
+    }
+    .comparison-table__icon.is-circle{
+      border: 6px solid #3aafa1;
+      @include tb-only{
+        border: 4px solid #3aafa1;
+      }
+    }
+  }
+
+  .comparison-table__col2 {
+    color: #4a5568;
+    border-left: none;
+    padding: 24px;
+
+    @include tb-only{
+      padding: 16px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 8px;
+
+    &.is-double-circle {
+      width: 56px;
+      height: 56px;
+      border: 6px solid #3aafa1;
+      border-radius: 3em;
+      position: relative;
+      @include tb-only{
+        width: 40px;
+        height: 40px;
+        border: 4px solid #3aafa1;
+      }
+
+      &::before{
+        content: "";
+        width: 32px;
+        height: 32px;
+        border: 6px solid #3aafa1;
+        border-radius: 3em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        @include tb-only{
+          width: 20px;
+          height: 20px;
+          border: 4px solid #3aafa1;
+        }
+      }
+    }
+
+    &.is-circle {
+      width: 56px;
+      height: 56px;
+      border: 6px solid #003988;
+      border-radius: 3em;
+      position: relative;
+      @include tb-only{
+        width: 40px;
+        height: 40px;
+        border: 4px solid #003988;
+      }
+    }
+
+    &.is-triangle {
+      width: 56px;
+      height: 49px;
+      background-color: #91a5c0;
+      clip-path: polygon(
+        50% 0%, 0% 100%, 100% 100%,
+        50% 0%, 50% 24%, 82% 88%, 18% 88%, 50% 24%
+      );
+      @include tb-only{
+        width: 40px;
+        height: 34px;
+      }
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+    color: #2d3748;
+
+    @include tb-only{
+      font-size: 13px;
+    }
+
+    .small{
+      font-size: 12px;
+
+      @include tb-only{
+        font-size: 10px;
+      }
+    }
+
+    .comparison-table__col1 & {
+      font-weight: bold;
+      color: #003988;
+    }
+  }
+
+  tr:last-child{
+    .comparison-table__row-title {
+      border-bottom: none;
+    }
+    .comparison-table__col1 {
+      border-bottom: 2px solid #003988;
+    }
+  }
+
+}
+
+.comparison-table-area {
+  position: relative;
+}
+.comparison-scroll-overlay {
+  display: none;
+  @include tb-only {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: rgba(11, 46, 89, 0.1);
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 180px;
+    padding: 20px 24px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.92);
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(11, 46, 89, 0.28);
+  }
+
+  &__icon {
+    width: 34px;
+    height: 34px;
+    animation: scrollOverlayBounce 1.6s infinite ease-in-out;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+}
+
+@keyframes scrollOverlayBounce {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+}
+
 .ipo-support-flow{
 	padding-top: 80px;
 	padding-bottom: 80px;
@@ -7261,6 +7583,14 @@ textarea.is-invalid {
       position: relative;
       margin-bottom: 56px;
       border: none;
+
+      @include tb{
+        font-size: calc(1.125rem + (1vw - 3.75px) * 1.98895);
+      }
+
+      @include pc{
+        font-size: 36px;
+      }
 
       @include tb-only {
         font-size: 20px;

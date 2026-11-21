@@ -1135,6 +1135,9 @@
       align-items: center;
       position: relative;
       z-index: 1;
+      @include tb-only{
+        height: 48px;
+      }
     }
 
     &-img img {

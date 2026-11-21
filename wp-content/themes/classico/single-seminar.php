@@ -5,6 +5,7 @@
     <section class="section" id="_article">
       <div class="inner">
         <div class="inner-02">
+          <?php include("inc/breadcrumb.php"); ?>
           <div class="inner-03">
             <?php
               if ($terms = get_the_terms($post->ID, 'seminar_category')) {

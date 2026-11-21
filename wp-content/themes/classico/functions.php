@@ -213,6 +213,15 @@ function template_url_shortcode() {
 }
 add_shortcode('template_url', 'template_url_shortcode');
 
+// [include_breadcrumb] でパーツファイルをインクルードするショートコード
+function my_custom_breadcrumb_shortcode() {
+    ob_start();
+    // inc/breadcrumb.php を呼び出し
+    get_template_part( 'inc/breadcrumb' );
+    return ob_get_clean();
+}
+add_shortcode( 'include_breadcrumb', 'my_custom_breadcrumb_shortcode' );
+
 // コラムのsingleページへ属するカテゴリー（タクソノミー）のスラッグを body クラスに追加する
 function get_custom_single_term_class() {
     if ( ! is_singular( 'column' ) ) {
@@ -289,5 +298,221 @@ function my_defer_specific_css( $html, $handle, $href, $media ) {
 }
 add_filter( 'style_loader_tag', 'my_defer_specific_css', 10, 4 );
 
+/**
+ * パンくずリストの構造化データ（JSON-LD）を自動出力
+ */
+function output_breadcrumb_json_ld() {
+    global $post;
+
+    $home_url = esc_url( home_url( '/' ) );
+    $items = array();
+
+    // 1. ホーム
+    $items[] = array(
+        '@type' => 'ListItem',
+        'position' => 1,
+        'name' => 'ホーム',
+        'item' => $home_url
+    );
+
+    $position = 2;
+
+    // 2. アーカイブページの場合
+    if ( is_archive() ) {
+        $archive_title = get_the_archive_title();
+        $archive_url   = esc_url( get_pagenum_link( 1 ) );
+
+        // カスタム投稿「voice」の個別アーカイブURL（/voices/）対応
+        if ( is_post_type_archive( 'voice' ) ) {
+            $archive_title = 'お客様の声'; // 必要に応じて変更可
+            $archive_url   = esc_url( home_url( '/voices/' ) );
+        } elseif ( is_category() ) {
+            $archive_title = single_cat_title( '', false );
+        } elseif ( is_tag() ) {
+            $archive_title = single_tag_title( '', false );
+        } elseif ( is_tax() ) {
+            $archive_title = single_term_title( '', false );
+        } elseif ( is_post_type_archive() ) {
+            $archive_title = post_type_archive_title( '', false );
+        }
+
+        $items[] = array(
+            '@type' => 'ListItem',
+            'position' => $position,
+            'name' => $archive_title,
+            'item' => $archive_url
+        );
+
+    // 3. 個別投稿ページ（投稿／カスタム投稿）の場合
+    } elseif ( is_single() ) {
+        $post_type = get_post_type();
+        if ( $post_type === 'voice' ) {
+            // カスタム投稿「voice」の詳細ページの場合、一覧を強制的に /voices/ にする
+            $items[] = array(
+                '@type' => 'ListItem',
+                'position' => $position++,
+                'name' => 'お客様の声',
+                'item' => esc_url( home_url( '/voices/' ) )
+            );
+        } elseif ( $post_type !== 'post' ) {
+            $post_type_object = get_post_type_object( $post_type );
+            if ( $post_type_object && $post_type_object->has_archive ) {
+                $items[] = array(
+                    '@type' => 'ListItem',
+                    'position' => $position++,
+                    'name' => $post_type_object->label,
+                    'item' => esc_url( get_post_type_archive_link( $post_type ) )
+                );
+            }
+        } else {
+            $categories = get_the_category();
+            if ( ! empty( $categories ) ) {
+                $items[] = array(
+                    '@type' => 'ListItem',
+                    'position' => $position++,
+                    'name' => $categories[0]->name,
+                    'item' => esc_url( get_category_link( $categories[0]->term_id ) )
+                );
+            }
+        }
+        $items[] = array(
+            '@type' => 'ListItem',
+            'position' => $position,
+            'name' => get_the_title(),
+            'item' => esc_url( get_permalink() )
+        );
+
+    // 4. 固定ページの場合
+    } elseif ( is_page() ) {
+        if ( isset( $post->post_parent ) && $post->post_parent ) {
+            $parent_ids = array_reverse( get_post_ancestors( $post->ID ) );
+            foreach ( $parent_ids as $parent_id ) {
+                $items[] = array(
+                    '@type' => 'ListItem',
+                    'position' => $position++,
+                    'name' => get_the_title( $parent_id ),
+                    'item' => esc_url( get_permalink( $parent_id ) )
+                );
+            }
+        }
+        $items[] = array(
+            '@type' => 'ListItem',
+            'position' => $position,
+            'name' => get_the_title(),
+            'item' => esc_url( get_permalink() )
+        );
+
+    // 5. 検索結果ページの場合
+    } elseif ( is_search() ) {
+        $items[] = array(
+            '@type' => 'ListItem',
+            'position' => $position,
+            'name' => '「' . get_search_query() . '」の検索結果',
+            'item' => esc_url( get_search_link( get_search_query() ) )
+        );
+    }
+
+    // トップページ以外の場合のみ構造化データを出力
+    if ( ! is_front_page() && ! is_home() ) {
+        $breadcrumb_list = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => $items
+        );
+
+        echo '<script type="application/ld+json">' . wp_json_encode( 
+            $breadcrumb_list, 
+            JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE 
+        ) . '</script>' . "\n";
+    }
+}
+add_action( 'wp_head', 'output_breadcrumb_json_ld', 1 );
+
+// トップページのよくある質問と構造化データを出力
+function get_custom_faq_items() {
+    return array(
+        array(
+            'q' => '社会保険労務士法人クラシコの強みや、他社労士事務所との違いは何ですか？',
+            'a' => 'クラシコの最大の強みは、「<b>上場準備時（IPO）の労務体制整備</b>」や「<b>高度な労務監査</b>」における専門性と豊富な実績です。社会保険労務士を中心とした専門チームが、上場審査の先を見据えた持続可能な労務管理体制を、オーダーメイドでご提供します。'
+        ),
+        array(
+            'q' => '全国対応は可能ですか？また、オンラインでの相談や打ち合わせにも対応していますか？',
+            'a' => '<b>はい、オンラインによる全国対応をしております。</b><br>貴社のご都合に合わせて、Zoom等を活用したWeb会議システムでのご相談・お打ち合わせに柔軟に対応可能です。チャットツール（Chatwork等）を用いた日常的な労務コミュニケーションも完備しております。'
+        ),
+        array(
+            'q' => 'どのような規模・業界の企業が利用していますか？',
+            'a' => '上場準備企業（N-3期以前）や数十名〜数千名規模の中堅・大手企業まで幅広くご利用いただいております。IT・Web、製造、サービス、医療・福祉など、多様な業界に対応した実績がございます。'
+        ),
+        array(
+            'q' => '単発のスポット依頼（労務監査・就業規則の改定・システム導入など）も相談できますか？',
+            'a' => '<b>はい、内容に応じてスポット（単体）でのご依頼も承っております。</b><br>「まずは労務監査だけ依頼したい」「就業規則のみ改定したい」「IPO支援や専門的な労務コンサルティングを依頼したい」「勤怠・労務システムの導入設計から始めたい」など、貴社の課題や成長フェーズに応じた柔軟なサポートが可能です。<br><br>※給与計算など、継続的な作業が必要な業務は、顧問契約・コンサルティングの一部として承っております。'
+        ),
+        array(
+            'q' => '給与計算や社会保険手続きのアウトソーシング（代行）はクラウドシステムに対応していますか？',
+            'a' => 'マネーフォワードクラウド給与、オフィスステーション労務、SmartHR、KING OF TIME、Touch on Timeなど、主要な人事労務・給与計算・勤怠管理システムに対応しています。現在の運用状況を確認しながら、必要に応じてシステム変更も含めて最適な運用方法をご提案します。委託替えの場合は、現在の社労士事務所と連携した引き継ぎにも対応しています。'
+        ),
+        array(
+            'q' => '相談や見積もりは無料ですか？契約までの流れを教えてください。',
+            'a' => '初回のご相談およびお見積もり作成は完全無料です。<br>Web問い合わせフォームまたはお電話にてご連絡いただいた後、弊社の担当者が貴社の現状や課題をヒアリングし、最適な支援プラン・お見積もりをご提示いたします。強引な営業は一切ございませんのでご安心ください。'
+        ),
+ );
+}
+
+// 1. <head> 内へ FAQPage 構造化データを挿入する処理
+function add_faq_json_ld_to_head() {
+    // 該当ページでショートコード [show_faq] が使われているか判定
+    global $post;
+    if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'show_faq' ) ) {
+        
+        $faq_items = get_custom_faq_items();
+        
+        $json_ld = array(
+            '@context'   => 'https://schema.org',
+            '@type'      => 'FAQPage',
+            'mainEntity' => array()
+        );
+
+        foreach ( $faq_items as $item ) {
+            $json_ld['mainEntity'][] = array(
+                '@type'          => 'Question',
+                'name'           => wp_strip_all_tags( $item['q'] ),
+                'acceptedAnswer' => array(
+                    '@type' => 'Answer',
+                    'text'  => wp_strip_all_tags( $item['a'] )
+                )
+            );
+        }
+
+        echo '<script type="application/ld+json">' . wp_json_encode( 
+            $json_ld, 
+            JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE 
+        ) . '</script>' . "\n";
+    }
+}
+add_action( 'wp_head', 'add_faq_json_ld_to_head' );
+
+// 2. 本文中に HTML のみを出力するショートコード関数
+function render_custom_faq_shortcode() {
+    $faq_items = get_custom_faq_items();
+
+    ob_start();
+    ?>
+    <section id="_faq" class="section faq sharoshi-faq">
+        <div class="sharoshi-faq__inner inner">
+            <div class="inner-02">
+                <h2 class="sharoshi-faq__head head head-E"><span class="ja">よくあるご質問</span><span class="en">FAQ</span></h2>
+                <?php foreach ( $faq_items as $item ) : ?>
+                    <dl class="c-faq01">
+                        <dt class="c-faq01__head"><span class="c-faq01__ico">Q.</span><?php echo $item['q']; ?></dt>
+                        <dd class="c-faq01__txt"><span class="c-faq01__ico">A.</span><?php echo $item['a']; ?></dd>
+                    </dl>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'show_faq', 'render_custom_faq_shortcode' );
 
 ?>

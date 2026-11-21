@@ -307,5 +307,23 @@
       });
     })();
 
+    /* ====================================================
+     * 10. IPOページ比較表の横スクロール表示
+     * ==================================================== */
+
+    $('.comparison-table-area').each(function () {
+        var $area = $(this);
+        var $tableWrap = $area.find('.comparison-table-wrap');
+        var $scrollOverlay = $area.find('.comparison-scroll-overlay');
+
+        if ($tableWrap.length && $scrollOverlay.length) {
+          $tableWrap.on('scroll', function () {
+            if ($(this).scrollLeft() > 8) {
+              $scrollOverlay.addClass('is-hidden');
+            }
+          });
+        }
+      });
+
   });
 })(jQuery);

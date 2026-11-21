@@ -3,6 +3,7 @@
 <!-- CONTENT -->
 <div id="content">
 <section id="_head" class="section">
+<?php include("inc/breadcrumb.php"); ?>
 <div class="inner">
 <div class="inner-02">
 <h2 class="head head-C"><span class="ja">セミナー情報</span><span class="en">SEMINAR</span></h2>

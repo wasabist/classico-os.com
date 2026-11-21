@@ -2,6 +2,7 @@
 
 <!-- CONTENT -->
 <div id="content">
+<?php include("inc/breadcrumb.php"); ?>
     <section id="_head" class="section">
         <div class="inner">
             <div class="inner-02">
@@ -47,6 +48,7 @@
             <?php endif; ?>
         </div>
     </section>
+<?php include("contact.php"); ?>
 </div>
 <!-- E CONTENT -->
 

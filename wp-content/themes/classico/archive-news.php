@@ -2,6 +2,7 @@
 
 <!-- CONTENT -->
 <div id="content">
+<?php include("inc/breadcrumb.php"); ?>
 <section id="_head" class="section">
 <div class="inner">
 <div class="inner-02">
