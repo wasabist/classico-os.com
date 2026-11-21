@@ -937,6 +937,315 @@ body {
     }
   }
 
+  /* --- #_reason Section --- */
+  .p-reasons {
+    padding: 80px 0;
+    background-color: #e8eef5;
+
+    @mixin tb-only {
+      padding: 56px 0;
+    }
+    .l-inner{
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      box-sizing: content-box;
+    }
+
+    &__head {
+      text-align: center;
+      margin-bottom: 64px;
+
+      @mixin tb-only {
+        margin-bottom: 32px;
+      }
+    }
+
+    &__title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin: 0 0 32px;
+    }
+
+    &__title-ja {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #003988;
+      letter-spacing: 0.04em;
+
+      @mixin tb-only {
+        font-size: 24px;
+      }
+    }
+
+    &__title-en {
+      font-size: 15px;
+      font-weight: normal;
+      letter-spacing: 0.14em;
+      color: #003988;
+      text-transform: uppercase;
+    }
+
+    &__lead {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.8;
+
+      @mixin tb-only {
+        font-size: 13px;
+      }
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+
+      @media screen and (max-width: 960px) {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  }
+
+  /* ----------------------------------------------------
+    理由カード
+  ---------------------------------------------------- */
+  .p-reason-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(11, 46, 89, 0.06);
+    overflow: hidden;
+
+    &__num {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background-color: #16498a;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    &__body {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 24px 20px;
+
+      @mixin tb-only {
+        padding: 24px 18px 18px;
+      }
+    }
+
+    &__illust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 170px;
+      margin-bottom: 18px;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    &__sub {
+      margin: 0 0 6px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #16498a;
+    }
+
+    &__heading {
+      margin: 0 0 18px;
+      text-align: center;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #1a202c;
+
+      @mixin tb-only {
+        font-size: 17px;
+      }
+    }
+
+    /* 実績・特徴ハイライト枠 */
+    &__stats {
+      background-color: #f4f7fb;
+      border-radius: 4px;
+      padding: 14px 12px;
+      margin-bottom: 18px;
+
+      &.is-two-col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        position: relative;
+
+        &:not(.is-text-box) .p-reason-card__stat-item:first-child {
+          border-right: 1px solid #d9e2ec;
+          padding-right: 12px;
+        }
+      }
+
+      &.is-single {
+        text-align: center;
+      }
+    }
+
+    &__stat-item {
+      text-align: center;
+    }
+
+    &__stat-main {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+      margin: 0 0 4px;
+      color: #0b2e59;
+      font-weight: 700;
+
+      .label {
+        font-size: 12px;
+        line-height: 1.25;
+        margin-right: 6px;
+        text-align: left;
+      }
+
+      .num {
+        font-size: 28px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+
+        &.is-lg {
+          font-size: 32px;
+        }
+      }
+
+      .unit {
+        font-size: 13px;
+        line-height: 1.2;
+
+        &.is-lg {
+          font-size: 15px;
+        }
+      }
+    }
+
+    &__stat-sub {
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.4;
+      color: #4a5568;
+    }
+
+    &__box-title {
+      margin: 0 0 4px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0b2e59;
+    }
+
+    &__box-desc {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.45;
+      color: #4a5568;
+    }
+
+    /* チェックリスト */
+    &__checks {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #2d3748;
+
+      li {
+        position: relative;
+        padding-left: 18px;
+        margin-bottom: 8px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &::before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: #16498a;
+          font-weight: 700;
+        }
+
+        .note {
+          display: block;
+          font-size: 11px;
+          color: #718096;
+          margin-top: 2px;
+        }
+      }
+    }
+
+    /* カード下部リンク */
+    &__footer {
+      padding: 14px 24px 20px;
+      border-top: 1px solid #edf2f7;
+
+      @mixin tb-only {
+        padding: 14px 18px 18px;
+      }
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0b2e59;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        opacity: 0.75;
+
+        .arrow {
+          transform: translateX(3px);
+        }
+      }
+
+      .arrow {
+        font-weight: 700;
+        transition: transform 0.2s ease;
+      }
+    }
+  }
+
   /* --- #_news Section --- */
   > #_news {
     > .inner > .inner-02 {
