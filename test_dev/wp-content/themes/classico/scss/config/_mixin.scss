@@ -1,6 +1,7 @@
 // Breakpoints
 $bp-sp: 375px;
 $bp-tb: 768px;
+$bp-960: 961px;
 $bp-wrap: 1020px;
 $bp-pc: 1280px;
 
@@ -15,6 +16,9 @@ $bp-pc: 1280px;
 }
 @mixin sp-only {
   @media (max-width: #{$bp-pc - 1px}) { @content; }
+}
+@mixin max960 {
+  @media (max-width: #{$bp-960 - 1px}) { @content; }
 }
 @mixin tb-only {
   @media (max-width: #{$bp-tb - 1px}) { @content; }

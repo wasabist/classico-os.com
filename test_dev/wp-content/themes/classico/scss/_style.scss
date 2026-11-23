@@ -942,7 +942,7 @@ body {
     padding: 80px 0;
     background-color: #e8eef5;
 
-    @mixin tb-only {
+    @include tb-only {
       padding: 56px 0;
     }
     .l-inner{
@@ -956,7 +956,7 @@ body {
       text-align: center;
       margin-bottom: 64px;
 
-      @mixin tb-only {
+      @include tb-only {
         margin-bottom: 32px;
       }
     }
@@ -970,14 +970,17 @@ body {
     }
 
     &__title-ja {
-      font-size: 36px;
+      font-size: calc(1.6875rem + (1vw - 3.75px) * .99448);
       font-weight: 700;
       line-height: 1.35;
       color: #003988;
       letter-spacing: 0.04em;
 
-      @mixin tb-only {
-        font-size: 24px;
+      @include tb {
+        font-size: 32px;
+      }
+      @include pc{
+        font-size: 36px;
       }
     }
 
@@ -994,7 +997,7 @@ body {
       font-size: 16px;
       line-height: 1.8;
 
-      @mixin tb-only {
+      @include tb-only {
         font-size: 13px;
       }
     }
@@ -1005,16 +1008,13 @@ body {
       gap: 24px;
       align-items: stretch;
 
-      @media screen and (max-width: 960px) {
+      @include max960 {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 24px;
       }
     }
   }
-
-  /* ----------------------------------------------------
-    理由カード
-  ---------------------------------------------------- */
+  
   .p-reason-card {
     position: relative;
     display: flex;
@@ -1024,6 +1024,15 @@ body {
     border-radius: 6px;
     box-shadow: 0 6px 20px rgba(11, 46, 89, 0.06);
     overflow: hidden;
+    @include max960 {
+      margin: 0 auto;
+      max-width: 480px;
+      width: 88vw;
+    }
+
+    &:last-of-type .p-reason-card__stat-item{
+      flex: 1;
+    }
 
     &__num {
       position: absolute;
@@ -1033,32 +1042,43 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 44px;
-      height: 44px;
-      background-color: #16498a;
+      width: 56px;
+      height: 56px;
+      background-color: #2665bc;
       color: #fff;
-      font-size: 18px;
+      font-family: "Century Gothic", Futura, sans-serif;
+      font-size: 24px;
       font-weight: 700;
       line-height: 1;
+      border-radius: 0 0 4px 0;
+
+      @include tb {
+        width: 64px;
+        height: 64px;
+      }
     }
 
     &__body {
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
-      padding: 28px 24px 20px;
+      align-items: initial;
+      padding: 24px;
 
-      @mixin tb-only {
+      @include tb-only {
         padding: 24px 18px 18px;
       }
     }
 
     &__illust {
       display: flex;
-      align-items: center;
+      align-items: end;
       justify-content: center;
-      height: 170px;
-      margin-bottom: 18px;
+      margin-bottom: 24px;
+      height: 160px;
+      @include pc{
+        height: 205px;
+      }
 
       img {
         max-width: 100%;
@@ -1070,42 +1090,49 @@ body {
     }
 
     &__sub {
-      margin: 0 0 6px;
+      margin: 0 0 8px;
       text-align: center;
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 700;
-      color: #16498a;
+      color: #2665bc;
     }
 
     &__heading {
       margin: 0 0 18px;
+      padding-bottom: 0;
+      border-bottom: none;
       text-align: center;
-      font-size: 19px;
+      font-size: 22px;
       font-weight: 700;
       line-height: 1.45;
-      color: #1a202c;
+      color: #262626;
+      letter-spacing: 0;
 
-      @mixin tb-only {
-        font-size: 17px;
+      @include pc {
+        font-size: 24px;
       }
     }
 
-    /* 実績・特徴ハイライト枠 */
     &__stats {
-      background-color: #f4f7fb;
-      border-radius: 4px;
-      padding: 14px 12px;
-      margin-bottom: 18px;
+      background-color: #f1f5fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
 
       &.is-two-col {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        display: flex;
+        justify-content: center;
+        gap: 16px;
         position: relative;
 
         &:not(.is-text-box) .p-reason-card__stat-item:first-child {
-          border-right: 1px solid #d9e2ec;
-          padding-right: 12px;
+          border-right: 1px solid #d7dde6;
+          padding-right: 16px;
+        }
+
+        .p-reason-card__stat-item:first-child {
+          border-right: 1px solid #d7dde6;
+          padding-right: 16px;
         }
       }
 
@@ -1114,58 +1141,60 @@ body {
       }
     }
 
-    &__stat-item {
-      text-align: center;
-    }
-
     &__stat-main {
       display: flex;
       align-items: baseline;
       justify-content: center;
       gap: 2px;
-      margin: 0 0 4px;
-      color: #0b2e59;
+      color: #2665bc;
       font-weight: 700;
 
       .label {
-        font-size: 12px;
+        font-size: 18px;
         line-height: 1.25;
         margin-right: 6px;
         text-align: left;
+        align-self: center;
       }
 
       .num {
-        font-size: 28px;
-        line-height: 1.1;
+        font-family: "Century Gothic", Futura, sans-serif;
+        font-size: 40px;
+        line-height: 1;
         letter-spacing: -0.02em;
 
-        &.is-lg {
-          font-size: 32px;
+        @include pc {
+          font-size: 48px;
         }
       }
 
       .unit {
-        font-size: 13px;
+        font-size: 16px;
         line-height: 1.2;
 
-        &.is-lg {
-          font-size: 15px;
+        @include pc {
+          font-size: 20px;
         }
       }
     }
 
     &__stat-sub {
       margin: 0;
-      font-size: 11px;
+      font-size: 10px;
       line-height: 1.4;
-      color: #4a5568;
+      color: #5d5d5d;
+      letter-spacing: 0;
+
+      @include pc {
+        font-size: 12px;
+      }
     }
 
     &__box-title {
       margin: 0 0 4px;
-      font-size: 14px;
+      font-size: 20px;
       font-weight: 700;
-      color: #0b2e59;
+      color: #2665bc;
     }
 
     &__box-desc {
@@ -1175,72 +1204,87 @@ body {
       color: #4a5568;
     }
 
-    /* チェックリスト */
     &__checks {
       list-style: none;
       margin: 0;
       padding: 0;
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.55;
-      color: #2d3748;
 
       li {
         position: relative;
-        padding-left: 18px;
-        margin-bottom: 8px;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
 
         &:last-child {
           margin-bottom: 0;
         }
 
         &::before {
-          content: "✓";
-          position: absolute;
-          left: 0;
-          top: 0;
+          content: "";
+          background: url(../img/common/ico_check_blue.svg) no-repeat center center;
+          width: 12px;
+          height: 9px;
+          display: block;
           color: #16498a;
           font-weight: 700;
+          margin-right: 8px;
         }
 
         .note {
           display: block;
           font-size: 11px;
           color: #718096;
-          margin-top: 2px;
+          width: 100%;
+          padding-left: 18px;
+          
         }
       }
     }
 
-    /* カード下部リンク */
     &__footer {
-      padding: 14px 24px 20px;
-      border-top: 1px solid #edf2f7;
-
-      @mixin tb-only {
-        padding: 14px 18px 18px;
-      }
+      border-top: 1px dashed #d7dde6;
     }
 
     &__link {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      font-size: 13px;
+      justify-content: center;
+      font-size: 14px;
       font-weight: 700;
-      color: #0b2e59;
-      text-decoration: none;
+      color: #2665bc;
       transition: opacity 0.2s ease, transform 0.2s ease;
+      gap: 8px;
+      padding: 24px;
+
+      @include tb-only {
+        padding: 14px 18px 18px;
+      }
 
       &:hover {
         opacity: 0.75;
 
-        .arrow {
+        span{
+          text-decoration: none;
+        }
+
+        &::after {
           transform: translateX(3px);
         }
       }
 
-      .arrow {
-        font-weight: 700;
+      span{
+        text-decoration: underline;
+      }
+
+      &::after {
+        content: "";
+        background: url(../img/common/ico_arrow_right.svg) no-repeat center center;
+        width: 6px;
+        height: 11px;
+        display: block;
         transition: transform 0.2s ease;
       }
     }
@@ -1383,7 +1427,7 @@ body {
           }
 
           > img {
-            width: 100%;
+            max-width: 100%;
             height: auto;
           }
         }
