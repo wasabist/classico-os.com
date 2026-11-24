@@ -1,11 +1,13 @@
 <!-- wp:html -->
 <section id="_head" class="section">
-<div class="inner">
-<div class="inner-02">
-<h2 class="head head-C"><span class="ja">お問い合わせ</span><br><span class="en">新規契約・資料請求・業務提携をご検討中の方は、下記フォームへ必要事項をご記入ください</span></h2>
-</div>
-</div>
+	[include_breadcrumb]
+	<div class="inner">
+		<div class="inner-02">
+			<h2 class="head head-C"><span class="ja">お問い合わせ</span><br><span class="en">新規契約・資料請求・業務提携をご検討中の方は、下記フォームへ必要事項をご記入ください</span></h2>
+		</div>
+	</div>
 </section>
+
 <section id="fixation_content">
 	<div role="form">
 		<form id="form_1" action="https://form.k3r.jp/classico/contact" method="POST">
@@ -99,23 +101,6 @@
 							</fieldset>
 						</dd>
 					</dl>
-					<!--<dl class="form_dl">
-					<dt>お問い合わせ項目<span>必須</span><br><span class="notice">※複数選択可</span></dt>	
-						<dd class="input_short form-group">
-							<fieldset class="checkbox_wrap checkbox-group">
-								<label><input type="checkbox" name="f_item_select9[]" class="inquiry-item-checkbox required-group" value="労務相談" required>労務相談</label>
-								<label><input type="checkbox" name="f_item_select9[]" class="inquiry-item-checkbox required-group" value="各種保険手続き" required>各種保険手続き</label>
-								<label><input type="checkbox" name="f_item_select9[]" class="inquiry-item-checkbox required-group" value="給与計算" required>給与計算</label>
-								<label><input type="checkbox" name="f_item_select9[]" class="inquiry-item-checkbox required-group" value="助成金申請" required>助成金申請</label>
-								<label><input type="checkbox" name="f_item_select9[]" class="inquiry-item-checkbox required-group" value="就業規則・規程" required>就業規則・規程</label>
-								<label><input type="checkbox" name="f_item_select9[]" class="inquiry-item-checkbox required-group" value="労務監査（労務デューデリジェンス）" required>労務監査（労務デューデリジェンス）</label>
-								<label><input type="checkbox" name="f_item_select9[]" class="inquiry-item-checkbox required-group" value="バックオフィスのIT化" required>バックオフィスのIT化</label>
-								<label><input type="checkbox" name="f_item_select9[]" class="inquiry-item-checkbox required-group" value="IPO支援コンサルティング" required>IPO支援コンサルティング</label>
-								<label><input type="checkbox" name="f_item_select9[]" class="inquiry-item-checkbox required-group" value="上記以外の内容" required>上記以外の内容</label>
-							</fieldset>
-							<span class="error-msg"></span>
-						</dd>
-					</dl>-->
 					<dl class="form_dl">
 					<dt>お問い合わせ項目<span>必須</span><br><span class="notice">※複数選択可</span></dt>	
 						<dd class="input_short form-group">
@@ -171,6 +156,7 @@
 						<span class="error-msg"></span>
 					</div>
 				</div>
+				<input type="hidden" name="test_mode" value="true">
 				<input type="hidden" name="api_key" value="3655f3d9963d3326abe2dbff4fccdce11ccdc9c3">
 				<input type="hidden" name="opt" value="1">
 				<input type="hidden" name="red" value="https://classico-os.com/test_dev/contact-thanks/">
@@ -191,7 +177,3 @@
 }	 
 </style>
 <!-- /wp:html -->
-
-<!-- wp:paragraph -->
-<p></p>
-<!-- /wp:paragraph -->

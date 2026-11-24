@@ -919,6 +919,7 @@ body {
   > #_columns,
   #_cases,
   > #_contact,
+  > ._contact,
   #_anchors,
   #_download {
     > .inner {
@@ -1690,7 +1691,8 @@ body {
   }
 
   /* --- #_contact Section --- */
-  > #_contact {
+  > #_contact,
+  > ._contact {
     position: relative;
     background: url(../img/common/bg_cta.png) no-repeat center center / cover;
 
@@ -1821,8 +1823,83 @@ body {
             margin-top: 6px;
           }
         }
+        .download_list_item{
+          margin: 40px auto 0;
+          background: #e5ebf3;
+          border-radius: 8px;
+          display: flex;
+          justify-content: space-between;
+          max-width: 980px;
+          flex-direction: column;
+          
+          @include tb{
+            flex-direction: row-reverse;
+            margin: 64px auto 0;
+          }
+
+          &-thumb{
+            overflow: hidden;
+            height: 32vw;
+
+            @include tb{
+              height: auto;
+              max-width: 440px;
+            }
+
+            img{
+              border-radius: 8px 8px 0 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              display: block;
+              @include tb{
+                border-radius: 0 8px 8px 0;
+              }
+            }
+          }
+          &-card{
+            padding: 16px;
+            text-align: center;
+            @include tb{
+              padding: 24px 40px;
+              min-width: 32em;
+              text-align: left;
+            }
+            .service-btn{
+              margin-top: 20px;
+              line-height: 54px;
+              min-width: auto;
+              @include tb{
+                min-width: 320px;
+              }
+              a{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+              }
+            }
+          }
+          &-title{
+            font-size: 18px;
+            letter-spacing: 0.08em;
+            line-height: 1.6;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+            border-bottom: none;
+            @include tb{
+              font-size: 22px;
+            }
+          }
+          &-txt{
+            color: initial;
+          }
+        }
       }
     }
+  }
+  > ._contact {
+    background: url(../img/iposupport/bg_cta.png) no-repeat center center / cover;
   }
 }
 
@@ -2175,8 +2252,12 @@ body {
   font-weight: 600;
   letter-spacing: .2em;
 
-  @include sp { font-size: calc(1.6875rem + ((1vw - 3.75px) * 0.99448)); }
-  @include pc { font-size: 36px; }
+  @include sp {
+    font-size: calc(1.6875rem + ((1vw - 3.75px) * 0.99448));
+  }
+  @include pc {
+    font-size: 36px;
+  }
 }
 
 .head-B {
@@ -2200,6 +2281,7 @@ body {
   color: $primary-color;
   margin-bottom: 30px;
   text-align: center;
+  line-height: 1.4;
 
   @include sp {
     margin-bottom: calc(1.875rem + ((1vw - 3.75px) * 3.31492));
